@@ -25,3 +25,13 @@ jobs:
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: pull Docker Image
+        run: docker pull carmassilucas/ssr:master
+      - name: removing existing container
+        run: docker rm -f ssr
+      - name: Run docker container
+        run: docker run -d -p 8080 --name ssr carmassilucas/ssr
