@@ -31,5 +31,7 @@ jobs:
     steps:
       - name: pull Docker Image
         run: docker pull carmassilucas/ssr:master
+      - name: removing existing container
+        run: docker rm -f ssr
       - name: run docker container
         run: docker run -d -p 8080 --name ssr carmassilucas/ssr:master
