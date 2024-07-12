@@ -1,7 +1,7 @@
 package br.com.edu.ifsp.ssr.controller;
 
 import br.com.edu.ifsp.ssr.controller.dto.CadastrarAlunoDto;
-import br.com.edu.ifsp.ssr.entity.Aluno;
+import br.com.edu.ifsp.ssr.entity.AlunoEntity;
 import br.com.edu.ifsp.ssr.service.AlunoService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -20,18 +20,18 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<Aluno> cadastrarAluno(@RequestBody @Valid CadastrarAlunoDto dto) {
+    public ResponseEntity<AlunoEntity> cadastrarAluno(@RequestBody @Valid CadastrarAlunoDto dto) {
         var aluno = this.service.cadastrarAluno(dto);
         return ResponseEntity.ok(aluno);
     }
 
     @GetMapping
-    public ResponseEntity<List<Aluno>> listarAlunos() {
+    public ResponseEntity<List<AlunoEntity>> listarAlunos() {
         return ResponseEntity.ok(this.service.listarAlunos());
     }
 
     @GetMapping("/{prontuario}")
-    public ResponseEntity<Aluno> listarPeloProntuario(@PathVariable String prontuario) {
+    public ResponseEntity<AlunoEntity> listarPeloProntuario(@PathVariable String prontuario) {
         return ResponseEntity.ok(this.service.listarPeloProntuario(prontuario));
     }
 }

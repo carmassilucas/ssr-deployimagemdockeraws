@@ -14,8 +14,6 @@ RUN mvn clean install
 #adicionando camada java 17
 FROM openjdk:17-jdk-slim
 
-
-
 #expondo porta 8080
 EXPOSE 8080
 

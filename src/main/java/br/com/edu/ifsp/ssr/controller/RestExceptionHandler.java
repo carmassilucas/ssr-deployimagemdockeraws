@@ -30,7 +30,7 @@ public class RestExceptionHandler {
         return ResponseEntity.badRequest().body(erros);
     }
 
-    private record InvalidParam(String name, String reason){
+    private record InvalidParam(String name, String reason) {
 
     }
 }

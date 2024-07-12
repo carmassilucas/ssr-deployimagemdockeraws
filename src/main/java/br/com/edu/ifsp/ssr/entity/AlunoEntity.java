@@ -2,17 +2,17 @@ package br.com.edu.ifsp.ssr.entity;
 
 import java.util.UUID;
 
-public class Aluno {
+public class AlunoEntity {
     private UUID id;
     private String nome;
     private String prontuario;
     private Integer periodo;
 
-    public Aluno() {
+    public AlunoEntity() {
 
     }
 
-    public Aluno(UUID id, String nome, String prontuario, Integer periodo) {
+    public AlunoEntity(UUID id, String nome, String prontuario, Integer periodo) {
         this.id = id;
         this.nome = nome;
         this.prontuario = prontuario;

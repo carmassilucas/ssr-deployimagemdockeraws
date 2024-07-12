@@ -1,7 +1,7 @@
 package br.com.edu.ifsp.ssr.service;
 
 import br.com.edu.ifsp.ssr.controller.dto.CadastrarAlunoDto;
-import br.com.edu.ifsp.ssr.entity.Aluno;
+import br.com.edu.ifsp.ssr.entity.AlunoEntity;
 import br.com.edu.ifsp.ssr.exception.AlunoNaoEncontradoException;
 import br.com.edu.ifsp.ssr.exception.ProntuarioExisteException;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import java.util.Optional;
 @Service
 public class AlunoService {
 
-    private final List<Aluno> alunos = new ArrayList<>();
+    private final List<AlunoEntity> alunos = new ArrayList<>();
 
-    public Aluno cadastrarAluno(CadastrarAlunoDto dto) {
+    public AlunoEntity cadastrarAluno(CadastrarAlunoDto dto) {
         if (findByProntuario(dto.prontuario()).isPresent()) {
             throw new ProntuarioExisteException();
         }
@@ -25,15 +25,15 @@ public class AlunoService {
         return aluno;
     }
 
-    public List<Aluno> listarAlunos() {
+    public List<AlunoEntity> listarAlunos() {
         return this.alunos;
     }
 
-    public Aluno listarPeloProntuario(String prontuario) {
+    public AlunoEntity listarPeloProntuario(String prontuario) {
         return findByProntuario(prontuario).orElseThrow(AlunoNaoEncontradoException::new);
     }
 
-    private Optional<Aluno> findByProntuario(String prontuario) {
+    private Optional<AlunoEntity> findByProntuario(String prontuario) {
         return this.alunos.stream().filter(aluno ->
                 aluno.getProntuario().equalsIgnoreCase(prontuario)
         ).findFirst();
