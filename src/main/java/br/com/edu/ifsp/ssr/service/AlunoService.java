@@ -33,6 +33,11 @@ public class AlunoService {
         return findByProntuario(prontuario).orElseThrow(AlunoNaoEncontradoException::new);
     }
 
+    public void deletarAluno(String prontuario) {
+        var aluno = findByProntuario(prontuario).orElseThrow(AlunoNaoEncontradoException::new);
+        alunos.remove(aluno);
+    }
+
     private Optional<AlunoEntity> findByProntuario(String prontuario) {
         return this.alunos.stream().filter(aluno ->
                 aluno.getProntuario().equalsIgnoreCase(prontuario)

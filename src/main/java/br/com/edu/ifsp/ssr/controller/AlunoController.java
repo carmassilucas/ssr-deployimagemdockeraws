@@ -34,4 +34,10 @@ public class AlunoController {
     public ResponseEntity<AlunoEntity> listarPeloProntuario(@PathVariable String prontuario) {
         return ResponseEntity.ok(this.service.listarPeloProntuario(prontuario));
     }
+
+    @DeleteMapping("/{prontuario}")
+    public ResponseEntity<Void> deletarAluno(@PathVariable String prontuario) {
+        this.service.deletarAluno(prontuario);
+        return ResponseEntity.noContent().build();
+    }
 }

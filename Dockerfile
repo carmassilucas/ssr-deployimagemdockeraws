@@ -17,7 +17,7 @@ FROM openjdk:17-jdk-slim
 #expondo porta 8080
 EXPOSE 8080
 
-#copiando arquivo jar da cama de build
+#copiando arquivo jar da camada de build
 COPY --from=build /target/ssr-0.0.1.jar /app.jar
 
 #definindo entrypoint para execução da aplicação
